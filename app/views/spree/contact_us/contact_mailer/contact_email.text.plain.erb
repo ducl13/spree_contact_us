@@ -1,4 +1,7 @@
+<% unless @contact.order_number.empty? %>
+Order #: <%= @contact.order_number %><
+<% end %>
 <%= @contact.message %>
 
 -------------------------------------
-<%= SpreeContactUs.require_name ? Spree.t(:sent_by_name, :email => @contact.email, :name => @contact.name) : Spree.t(:sent_by_contact_form, :email => @contact.email) %>
+<%= SpreeContactUs.require_name ? t('.sent_by_name', :email => @contact.email, :name => @contact.name) : t('.sent_by_contact_form', :email => @contact.email) %>
