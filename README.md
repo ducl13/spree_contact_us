@@ -13,6 +13,8 @@ SpreeContactUs requires:
 
 * Spree Core 3.1 or greater
 * Ruby 2.2.0 or greater.
+* reCAPTCHA - need configuration in the main app
+
 
 ## INSTALLATION
 

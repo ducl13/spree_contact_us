@@ -4,12 +4,21 @@ class Spree::ContactUs::ContactsController < Spree::StoreController
   def create
     @contact = Spree::ContactUs::Contact.new(params[:contact_us_contact])
 
-    if @contact.save
-      if Spree::ContactUs::Config.contact_tracking_message.present?
-        flash[:contact_tracking] = Spree::ContactUs::Config.contact_tracking_message
+    success = verify_recaptcha(model: @contact, action: 'contact_us', minimum_score: 0.5)
+    checkbox_success = verify_recaptcha unless success
+    if success || checkbox_success
+      if @contact.save
+        if Spree::ContactUs::Config.contact_tracking_message.present?
+          flash[:contact_tracking] = Spree::ContactUs::Config.contact_tracking_message
+        end
+        redirect_to(spree.root_path, :notice => Spree.t('contact_us.notices.success'))
+      else
+        render :new
       end
-      redirect_to(spree.root_path, :notice => Spree.t('contact_us.notices.success'))
     else
+      if !success
+        @show_checkbox_recaptcha = true
+      end
       render :new
     end
   end

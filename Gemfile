@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
+gem "recaptcha", github: 'ducl13/recaptcha', branch: 'master'
 gem "spree", github: "spree/spree", branch: "master"
 gem "spree_auth_devise", github: "spree/spree_auth_devise", branch: "master"
 gem "rails_test_params_backport", group: :test
