@@ -42,7 +42,7 @@
     <% if @show_checkbox_recaptcha %>
       <%= recaptcha_tags %>
     <% else %>
-      <%= recaptcha_v3(action: 'contact_us') %>
+      <%= recaptcha_v3(action: 'contact_us', site_key: ENV['RECAPTCHA_SITE_KEY_V3']) %>
     <% end %>
     This site is protected by reCAPTCHA and the Google
     <a href=”https://policies.google.com/privacy”>Privacy Policy</a> and

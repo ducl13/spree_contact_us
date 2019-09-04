@@ -4,7 +4,7 @@ class Spree::ContactUs::ContactsController < Spree::StoreController
   def create
     @contact = Spree::ContactUs::Contact.new(params[:contact_us_contact])
 
-    success = verify_recaptcha(model: @contact, action: 'contact_us', minimum_score: 0.5)
+    success = verify_recaptcha(model: @contact, action: 'contact_us', minimum_score: 0.5, secret_key: ENV['RECAPTCHA_SECRET_KEY_V3'])
     checkbox_success = verify_recaptcha unless success
     if success || checkbox_success
       if @contact.save
