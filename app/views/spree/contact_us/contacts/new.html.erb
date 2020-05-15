@@ -45,8 +45,8 @@
       <%= recaptcha_v3(action: 'contact_us', site_key: ENV['RECAPTCHA_SITE_KEY_V3']) %>
     <% end %>
     This site is protected by reCAPTCHA and the Google
-    <a href=”https://policies.google.com/privacy”>Privacy Policy</a> and
-    <a href=”https://policies.google.com/terms”>Terms of Service</a> apply.
+    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
   </p>
   <p>
     <%= f.submit Spree.t(:submit), :alt => Spree.t(:submit), :id => 'contact_us_contact_submit', :title => Spree.t(:submit) %>
